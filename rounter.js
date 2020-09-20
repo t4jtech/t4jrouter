@@ -10,7 +10,7 @@ const { routes } = require('./config.json');
 
 
 const app = express();
-const privateKey = fs.readFileSync('/home/ubuntu/t4j-ssl/technology4jewelry.com.ey');
+const privateKey = fs.readFileSync('/home/ubuntu/t4j-ssl/technology4jewelry.com.key');
 const certificate = fs.readFileSync('/home/ubuntu/t4j-ssl/t4j.crt.pem');
 const ca = fs.readFileSync('/home/ubuntu/t4j-ssl/gd_bundle-g2-g1.crt');
 
