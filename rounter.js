@@ -24,15 +24,17 @@ const credentials = {
 const httpsServer = https.createServer(credentials, app);
   
   
-
+module.exports = function(app) {
 app.use(
     '/',
     createProxyMiddleware({
       target: 'http://api.technology4jewelry.com:3000',
       changeOrigin: true,
+    
     })
   );
+  };
   
-httpsServer.listen(3000, () => {
+httpsServer.listen(443, () => {
     console.log('HTTPS Server running on port 443');
  });
