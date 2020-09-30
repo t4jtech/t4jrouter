@@ -23,21 +23,11 @@ const credentials = {
 const httpServer = http.createServer(app);
 const httpsServer = https.createServer(credentials, app);
   
-  
-module.exports = function(app) {
-app.use(
-    '/',
-    createProxyMiddleware({
-      target: 'http://api.technology4jewelry.com:3000',
-      changeOrigin: true,
-    
-    })
-  );
-  };
-  
-httpsServer.listen(3001, () => {
-    console.log('HTTPS Server running on port 2000');
- });
+
+httpsServer.createServer(options, function (req, res) {
+    res.writeHead(200);
+    res.end("Welcome to Node.js HTTPS Servern");
+ }).listen(3001)
 
 //  httpServer.listen(1000, () => {
 //   console.log('HTTPS Server running on port 1000');
