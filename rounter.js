@@ -20,11 +20,11 @@ const credentials = {
 	ca: ca
 };
 
-const httpServer = http.createServer(app);
-const httpsServer = https.createServer(credentials, app);
+// const httpServer = http.createServer(app);
+// const httpsServer = https.createServer(credentials, app);
   
 
-httpsServer.createServer(options, function (req, res) {
+httpsServer.createServer(credentials, function (req, res) {
     res.writeHead(200);
     res.end("Welcome to Node.js HTTPS Servern");
  }).listen(3001)
