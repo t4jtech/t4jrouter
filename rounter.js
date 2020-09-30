@@ -21,14 +21,16 @@ const credentials = {
 };
 
 // const httpServer = http.createServer(app);
-// const httpsServer = https.createServer(credentials, app);
+ const httpsServer = https.createServer(credentials, app);
   
 
-httpsServer.createServer(credentials, function (req, res) {
-    res.writeHead(200);
-    res.end("Welcome to Node.js HTTPS Servern");
- }).listen(3001)
+// const httpsServer.createServer(credentials, function (req, res) {
+//     res.writeHead(200);
+//     res.end("Welcome to Node.js HTTPS Servern");
+//  }).listen(3001)
 
-//  httpServer.listen(1000, () => {
-//   console.log('HTTPS Server running on port 1000');
-// });
+ httpServer.listen(3001, () => {
+  console.log('HTTPS Server running on port 1000');
+  res.writeHead(3001);
+    res.end("Welcome to Node.js HTTPS Servern");
+ });
