@@ -29,7 +29,7 @@ const credentials = {
 //     res.end("Welcome to Node.js HTTPS Servern");
 //  }).listen(3001)
 
- httpServer.listen(3001, () => {
+httpsServer.listen(3001, () => {
   console.log('HTTPS Server running on port 1000');
   res.writeHead(3001);
     res.end("Welcome to Node.js HTTPS Servern");
