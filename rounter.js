@@ -24,6 +24,8 @@ const credentials = {
 const httpServer = http.createServer(app);
 const httpsServer = https.createServer(credentials, app);
 
+module.exports = function (app) {
+
  for (route of routes) {
   app.use(route.route,
       proxy({
@@ -34,7 +36,7 @@ const httpsServer = https.createServer(credentials, app);
       })
   );
 }
-
+}
 //  httpServer.listen(80, () => {
 //   console.log('HTTP Server running on port 80');
 // });
