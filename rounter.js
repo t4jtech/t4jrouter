@@ -1,5 +1,5 @@
 const express = require('express');
-const createProxyMiddleware = require('http-proxy-middleware');
+const proxy = require('http-proxy-middleware');
 const fs = require('fs');
 const http = require('http');
 const https = require('https');
@@ -20,22 +20,25 @@ const credentials = {
 	ca: ca
 };
 
- const httpsServer = https.createServer(credentials, app);
 
+const httpServer = http.createServer(app);
+const httpsServer = https.createServer(credentials, app);
 
-app.get('/', (req, res) => {
-    res.send('Hello World');
-});
-// const httpServer = http.createServer(app);
-  
+ for (route of routes) {
+  app.use(route.route,
+      proxy({
+          target: route.address,
+          pathRewrite: (path, req) => {
+              return path.split('/').slice(2).join('/'); // Could use replace, but take care of the leading '/'
+          }
+      })
+  );
+}
 
-// const httpsServer.createServer(credentials, function (req, res) {
-//     res.writeHead(200);
-//     res.end("Welcome to Node.js HTTPS Servern");
-//  }).listen(3001)
+//  httpServer.listen(80, () => {
+//   console.log('HTTP Server running on port 80');
+// });
 
 httpsServer.listen(3001, () => {
-  console.log('HTTPS Server running on port 1000');
-  //res.writeHead(3001);
-   // res.end("Welcome to Node.js HTTPS Servern");
- });
+  console.log('HTTPS Server running on port 3001');
+  });
