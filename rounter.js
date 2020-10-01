@@ -20,8 +20,13 @@ const credentials = {
 	ca: ca
 };
 
-// const httpServer = http.createServer(app);
  const httpsServer = https.createServer(credentials, app);
+
+
+app.get('/', (req, res) => {
+    res.send('Hello World');
+});
+// const httpServer = http.createServer(app);
   
 
 // const httpsServer.createServer(credentials, function (req, res) {
