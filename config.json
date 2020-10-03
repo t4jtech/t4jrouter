@@ -2,7 +2,7 @@
     "routes": [
       {
         "route": "/",
-        "address": "http://api.technology4jewelry.com:3000"
+        "address": "http://dev.technology4jewelry.com:3000"
       }
     ]
   }
