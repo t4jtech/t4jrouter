@@ -27,6 +27,7 @@ const httpServer = http.createServer(app);
 module.exports = function (app) {
 
  for (route of routes) {
+   console.log("routes",route);
   app.use(route.route,
       proxy({
           target: route.address,
