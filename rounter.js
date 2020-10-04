@@ -24,7 +24,6 @@ const app = express();
 const httpServer = http.createServer(app);
 //const httpsServer = https.createServer(credentials, app);
 
-module.exports = function (app) {
 
  for (route of routes) {
    console.log("routes",route);
@@ -37,7 +36,7 @@ module.exports = function (app) {
       })
   );
 }
-}
+
  httpServer.listen(80, () => {
    console.log('HTTP Server running on port 80');
  });
