@@ -10,23 +10,22 @@ const { routes } = require('./config.json');
 
 
 const app = express();
-// const privateKey = fs.readFileSync('/home/ubuntu/t4j-ssl/private.pem', 'utf8');
-// const certificate = fs.readFileSync('/home/ubuntu/t4j-ssl/t4j.pem', 'utf8');
-// const ca = fs.readFileSync('/home/ubuntu/t4j-ssl/gd_bundle-g2-gl.pem', 'utf8');
+ const privateKey = fs.readFileSync('/home/ubuntu/t4j-ssl/private.pem', 'utf8');
+ const certificate = fs.readFileSync('/home/ubuntu/t4j-ssl/t4j.pem', 'utf8');
+ const ca = fs.readFileSync('/home/ubuntu/t4j-ssl/gd_bundle-g2-gl.pem', 'utf8');
 
-// const credentials = {
-// 	key: privateKey,
-// 	cert: certificate,
-// 	ca: ca
-// };
+ const credentials = {
+ 	key: privateKey,
+ 	cert: certificate,
+ 	ca: ca
+ };
 
 
 const httpServer = http.createServer(app);
-//const httpsServer = https.createServer(credentials, app);
+const httpsServer = https.createServer(credentials, app);
 
 
  for (route of routes) {
-   console.log("routes",route);
   app.use(route.route,
       proxy({
           target: route.address,
@@ -41,6 +40,6 @@ const httpServer = http.createServer(app);
    console.log('HTTP Server running on port 80');
  });
 
-// httpsServer.listen(443, () => {
-//   console.log('HTTPS Server running on port 3001');
-//   });
+ httpsServer.listen(443, () => {
+   console.log('HTTPS Server running on port 443');
+   });

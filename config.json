@@ -1,7 +1,7 @@
 {
     "routes": [
       {
-        "route": "/",
+        "route": "/t4jservice",
         "address": "http://dev.technology4jewelry.com:3000"
       }
     ]
