@@ -10,9 +10,9 @@ const { routes } = require('./config.json');
 
 
 const app = express();
- const privateKey = fs.readFileSync('/home/ubuntu/t4j-ssl/private.pem', 'utf8');
+ const privateKey = fs.readFileSync('/home/ubuntu/t4j-ssl/privatekey.pem', 'utf8');
  const certificate = fs.readFileSync('/home/ubuntu/t4j-ssl/t4j.pem', 'utf8');
- const ca = fs.readFileSync('/home/ubuntu/t4j-ssl/gd_bundle-g2-gl.pem', 'utf8');
+ const ca = fs.readFileSync('/home/ubuntu/t4j-ssl/fullchain.pem', 'utf8');
 
  const credentials = {
  	key: privateKey,
